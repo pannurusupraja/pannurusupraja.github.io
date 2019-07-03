@@ -9,20 +9,25 @@
         margin:0px;
         padding:0px;
         font-size: 16px;
-        font-family: Helvetica;
+        font-family: Trebuchet;
       }
 
       * {
         box-sizing: border-box;
       }
       .container{
-                    color:steelblue;
+                    color:black;
                     font:bold;
-                
+                    background-color:rgba(30, 56, 65, 0.164);
+                    padding:0px;
+                    margin:0px;
+                    height:80px;
                     
                 }
                 .text-center{
                     text-align: center;
+                    padding:0px;
+                    margin:0px
                 }
 
       *:active {
@@ -40,7 +45,8 @@
         height: 50px;
         text-align:center;
         height:100%;
-        background-color:rgba(4, 0, 255, 0.438);
+        background-color:#eee
+      
 
       }
       
@@ -53,8 +59,27 @@
         display: block;
       }
 
+
       #nav a:hover {
-        background-color: rgba(0,0,0,0.1)
+        background-color: #ccc;
+        line-height:55px;
+        transition:all .6s ease-in-out;
+      }
+      #RescheduleFlow a {
+        line-height:20px;
+        text-decoration:none;
+        color: blue;
+        font-variant:small-caps;
+        font-size: 15px;
+        display: block;
+        width:60px;
+        text-align: center;
+
+      }
+      #RescheduleFlow a:hover {
+        background-color: lightblue;
+        color:white;
+        
       }
 
       main {
@@ -65,14 +90,13 @@
       
       .page {
         display: none;
-        background-color:rgba(172, 197, 235, 0.986);
         padding-left:20px;
         padding-top:20px;
         margin:0px;
         height: 100%;
       }
       
-      .page h1 {
+      .page h2 {
         margin:0px;
       }
       
@@ -87,18 +111,22 @@
       :target ~ .default {
         display:none;
       }
+      ul{
+        list-style-type:disc;
+      }
 
     </style>
   </head>
   <body>
         <header class="container">
                 <div class="container">
+                  <br/>
                 <h2 class="text-center">RESCHEDULE FLOW</h2>
                 </div>
               </header>
     <div id="content">
       <nav id="nav">
-        <a href="#RescheduleFlow">Reschedule Flow</a>
+        <a href="#RescheduleFlow" >Reschedule Flow</a>
         <a href="#ezeeinfo">Ezeeinfo</a>
         <a href="#Bitla">Bitla</a>
         <a href="#TY">TY</a>
@@ -111,8 +139,8 @@
           <h4>Vendor API:</h4>
           <p>[Domain-name]/busservices/api/3.0/json/[operatorCode]/[username]/[api-token]/search/[fromCity]/[toCity]/[tripDate]</p>
           <h4>Reschedule parameters:</h4>
-          <ul>ticketTransferTerms.transferable</ul>
-          <ul>ticketTransferTerms.allowedTill</ul>
+          <ul><li>TicketTransferTerms.transferable</li><br>
+          <li>TicketTransferTerms.allowedTill</li></ul>
           <p>If transferable is ‘1’ reschedule will enable</p>
           <p>Else reschedule won’t allow </p>
          
@@ -122,7 +150,7 @@
           <p>Reschedule policy will take from operators proxy,proxy will update every day once.</p>
           <p>[DomainName]/bitlaNew/Operator/[Operator-Id].json</p>
           <p>If Allow_reschedule is true from avroutes</p>
-          <ul>will construct reschedule policy from above api </ul>
+          <ul><li>will construct reschedule policy from above api </li></ul>
           <p>Else won’t allow to reschedule</p>
           <h4>Reschedule parameter:</h4>
           <p>Reschedule_policies</p>
@@ -135,11 +163,11 @@
           <p>[DomainName]/APISearchRoutesV2?AgentID=[AgentID]&KeyCode=[KeyCode]&</p>
           <p>FromCityID=[FromCityID]&ToCityID=[ToCityID]&JourneyDate=[JourneyDate]</p>
           <h4>Reschedule Parameters:</h4>
-          <ul>IsRescheduleAllowed</ul>
-          <ul>ModificationTill</ul>
+          <ul><li>IsRescheduleAllowed</li><br>
+          <li>ModificationTill</li></ul>
           <p>If IsRescheduleAllowed is true</p>
-          <ul>Reschedule will Enabled </ul>
-          <p>Else won’t allow to reschedule</p>
+          <ul><li>Reschedule will Enabled. </li></ul>
+          <p>Else won’t allow to reschedule.</p>
 
         </div>
         <div id="BOGDS" class="page">
@@ -148,24 +176,28 @@
           <p>http://api2.seatseller.travel/availabletrips?source=11&destination=1083&doj=2018-08-15&</p>
           <p>noauth=true&consumerKey=oT0i4voFgs3Cvb2lS01zH1zyjOA8D7</p>
           <h4>Reschedule parameters:</h4>
-          <ul>reschedulingPolicy.windowTime</ul>
-          <ul>reschedulingPolicy.reschedulingCharge</ul>
+          <ul><li>reschedulingPolicy.windowTime</li>
+            <br>
+          <li>reschedulingPolicy.reschedulingCharge</li></ul>
           
 
         </div>
         <div id="RescheduleFlow" class="page default">
           <h2>Reschedule Flow</h2>
           <p>Vendor will enable the reschedule policy based on route level or operator level.</p>
-  <p>Redbus will enable based on route level => If Not enabled Need to check below cases</p>
-     <ul>vendor enabled or not.</ul>
-     <ul>If Enabled, by realtime update it will reflect on front end.</ul>
-  <p>Based on parameter check will enable the reschedule policy in our end</p>
-  <p>Once operator enables the reschedule policy, on realtime update it will reflect in Front end.</p>
-  <h4>Reschedule is enabled now for below Vendors.</h4>
-  <ul><a href="#ezeeinfo">Ezeeinfo</a></ul>
-  <ul><a href="#Bitla">Bitla</a></ul>
-  <ul><a href="#TY">TY</a></ul>
-  <ul><a href="#BOGDS">BOGDS</a></ul>
+          <p>Redbus will enable based on route level => If Not enabled Need to check below cases</p>
+          <ul>
+          <li>Vendor enabled or not.</li><br>
+          <li>If Enabled, on realtime update it will reflect on front end.</li>
+          </ul>
+          <p>Based on parameter check will enable the reschedule policy in our end</p>
+          <p>Once operator enables the reschedule policy, on realtime update it will reflect in Front end.</p>
+          <h4>Reschedule is enabled now for below Vendors.</h4>
+          <ul><a href="#ezeeinfo">Ezeeinfo</a></ul>
+          <ul><a href="#Bitla">Bitla</a></ul>
+          <ul><a href="#TY">TY</a></ul>
+         <ul><a href="#BOGDS">BOGDS</a></ul>
+  
         </div>
       </main>
     </div>
