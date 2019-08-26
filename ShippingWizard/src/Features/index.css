@@ -1,0 +1,15 @@
+.container{
+    color:steelblue;
+    font:bold;
+    width: 100%;  
+    height:40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding:0px;
+    margin:0px;
+    border-block: inherit;
+    
+}
